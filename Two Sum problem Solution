@@ -8,7 +8,6 @@ class Solution {
                 ans[0]=map.get(sol);
                 ans[1]=i;
                 break;
-
             }
             map.put(nums[i],i);
         }
