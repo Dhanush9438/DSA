@@ -1,0 +1,39 @@
+class Solution {
+    public int search(int[] nums, int target) {
+      int min=FindMin(nums);
+      int sol=BinarySearch(nums,0,min-1,target);
+      if(sol==-1){
+         sol=BinarySearch(nums,min,nums.length-1,target);
+      }
+      return sol;
+    }
+    public int FindMin(int[] arr){
+        int left=0,right=arr.length-1;
+        while(left<right){
+            int mid=(left+right)/2;
+            if(arr[mid]<arr[right]){
+                right=mid;
+            }
+            else{
+                left=mid+1;
+            }
+        }
+        return left;
+    }
+
+    public int BinarySearch(int[] arr,int left,int right, int target){
+        while(left<=right){
+            int mid=(left+right)/2;
+            if(arr[mid]==target){
+                return mid;
+            }
+            else if(arr[mid]>target){
+                right=mid-1;
+            }
+            else{
+                left=mid+1;
+            }
+        }
+        return -1;
+    }
+}
