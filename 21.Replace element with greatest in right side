@@ -1,0 +1,15 @@
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        int[] sol=new int[arr.length];
+        sol[arr.length-1]=-1;
+        int max=0;
+        for(int i=arr.length-1;i>0;i--){
+            if(arr[i]>max){
+                max=arr[i];
+                sol[i-1]=max;
+            }
+            sol[i-1]=max;
+        }
+        return sol;
+    }
+}
