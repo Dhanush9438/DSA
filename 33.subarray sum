@@ -1,0 +1,28 @@
+class Solution
+{
+    long subCount(long arr[] ,int n,int k)
+    {
+        HashMap<Long,Long> map= new HashMap<>();
+        long edge=1;
+        long sum=0;
+        map.put(sum,edge);
+        long count=0;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            long mod=sum%k;
+            if(mod<0){
+                mod+=k;
+            }
+            if(map.containsKey(mod)){
+                count+=map.get(mod);
+                map.put(mod,map.get(mod)+1);
+            }
+            else{
+                map.put(mod,edge);
+            }
+        }
+        return count;
+        
+        
+    }
+}
