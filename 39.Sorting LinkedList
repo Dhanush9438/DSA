@@ -1,0 +1,21 @@
+class Solution {
+    
+   public Node sort(Node head){
+        //your code here, return the head of the sorted list
+        ArrayList<Integer> list =new ArrayList<>();
+        Node node=head;
+        while(node!=null){
+            list.add(node.data);
+            node=node.next;
+        }
+        
+        Collections.sort(list);
+        node=head;
+        for(int i=0;i<list.size();i++){
+            node.data=list.get(i);
+            node=node.next;
+        }
+        
+        return head;
+   }
+}
