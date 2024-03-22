@@ -1,0 +1,28 @@
+class Solution {
+    public int calPoints(String[] operations) {
+        Stack<Integer> stack = new Stack<>();
+        for (String op : operations) {
+            switch (op) {
+                case "+" -> {
+                    stack.push(stack.peek() + stack.get(stack.size() - 2));
+                }
+                case "D" -> {
+                    stack.push(stack.peek() * 2);
+                }
+                case "C" -> {
+                    stack.pop();
+                }
+                default -> {
+                    int val = Integer.parseInt(op);
+                    stack.push(val);
+                }
+            }
+
+        }
+        int sum = 0;
+        for (int score : stack) {
+            sum += score;
+        }
+        return sum;
+    }
+}
