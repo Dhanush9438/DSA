@@ -1,0 +1,25 @@
+class Solution {
+    public void reorderList(ListNode head) {
+        if(head==null || head.next==null){
+            return;
+        }
+        ListNode temp=head;
+        Stack<ListNode> stack=new Stack<>();
+        while(temp!=null){
+            stack.push(temp);
+            temp=temp.next;
+        }
+        temp=head;
+        int size=stack.size()/2;
+        while(size-- > 0){
+            ListNode top=stack.pop();
+            ListNode temp2=temp.next;
+
+            temp.next=top;
+            temp=temp2;
+            top.next=temp2;
+        }
+        temp.next=null;
+
+    }
+}
