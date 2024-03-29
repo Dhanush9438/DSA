@@ -1,0 +1,21 @@
+class Solution {
+    public ListNode swapNodes(ListNode head, int k) {
+       k-=1;
+       ListNode temp=new ListNode(0);
+       temp.next=head;
+       ListNode fast=head,slow=head,prev=head;
+       for(int i=0;i<k;i++){
+        fast=fast.next;
+        prev=prev.next;
+       }
+       while(fast.next!=null){
+        slow=slow.next;
+        fast=fast.next;
+       }
+       int temp1=slow.val;
+       slow.val=prev.val;
+       prev.val=temp1;
+
+       return temp.next;
+    }
+}
