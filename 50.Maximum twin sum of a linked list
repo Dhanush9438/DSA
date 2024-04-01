@@ -1,0 +1,21 @@
+class Solution {
+    public int pairSum(ListNode head) {
+        ListNode temp=head;
+        Stack<Integer> stack=new Stack<>();
+        int size=0;
+        while(temp!=null){
+            stack.push(temp.val);
+            temp=temp.next;
+            size++;
+        }
+        temp=head;
+        int max=0;
+        while(size/2>0){
+            max=Math.max(max,temp.val+stack.pop());
+            temp=temp.next;
+            size--;
+        }
+         return max;
+        
+    }
+}
