@@ -1,0 +1,25 @@
+class Solution {
+    public int sumNumbers(TreeNode root) {
+        if(root==null){
+            return 0;
+        }
+        Queue<TreeNode> q=new LinkedList<>();
+        q.add(root);
+        int totalSum=0;
+        while(!q.isEmpty()){
+            TreeNode node=q.poll();
+            if(node.left!=null){
+                node.left.val+=node.val*10;
+                q.add(node.left);
+            }
+            if(node.right!=null){
+                node.right.val+=node.val*10;
+                q.add(node.right);
+            }
+            if(node.left==null && node.right==null){
+                totalSum+=node.val;
+            }
+        }
+        return totalSum;
+    }
+}
